@@ -14,13 +14,31 @@ export default function ContactPage() {
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
       setStatus('success');
-    }, 1000);
+    } catch (err: any) {
+      setErrorMessage(err.message || 'An error occurred while sending your message. Please try again.');
+      setStatus('idle');
+    }
   };
 
   return (
@@ -51,7 +69,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-2xl font-black text-white">Message Sent Successfully!</h3>
                 <p className="text-gray-300 text-sm max-w-md mx-auto">
-                  Thank you for reaching out to TimeAtlas support. We have received your inquiry and sent a confirmation email to <strong>{formData.email || 'your email'}</strong>.
+                  Thank you for reaching out to TimeAtlas support. We have received your inquiry and sent it to our team. We will get back to you at <strong>{formData.email || 'your email'}</strong>.
                 </p>
                 <button
                   onClick={() => {
@@ -68,6 +86,12 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                   <Mail className="w-5 h-5 text-cyan-400" /> Direct Message Form
                 </h3>
+
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -139,7 +163,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full py-4 rounded-xl text-sm font-extrabold text-gray-950 bg-gradient-to-r from-cyan-400 to-indigo-400 hover:from-cyan-300 hover:to-indigo-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                  className="w-full py-4 rounded-xl text-sm font-extrabold text-gray-950 bg-gradient-to-r from-cyan-400 to-indigo-400 hover:from-cyan-300 hover:to-indigo-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 disabled:opacity-50"
                 >
                   {status === 'submitting' ? (
                     <span>Submitting Message...</span>
@@ -166,31 +190,14 @@ export default function ContactPage() {
                 Direct customer support and technical assistance:
               </p>
               <a
-                href="mailto:support@timeatlas.app"
+                href="mailto:infosiddjain@gmail.com"
                 className="text-cyan-400 font-mono text-sm font-bold block hover:underline"
               >
-                support@timeatlas.app
+                infosiddjain@gmail.com
               </a>
             </div>
 
-            {/* Card 2: Press */}
-            <div className="p-6 rounded-3xl glass-panel space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <h4 className="text-lg font-bold text-white">Press & Media</h4>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                For press inquiries, brand assets, or review codes:
-              </p>
-              <a
-                href="mailto:press@timeatlas.app"
-                className="text-indigo-400 font-mono text-sm font-bold block hover:underline"
-              >
-                press@timeatlas.app
-              </a>
-            </div>
-
-            {/* Card 3: Response Time */}
+            {/* Card 2: Response Time */}
             <div className="p-6 rounded-3xl glass-panel space-y-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                 <Clock className="w-5 h-5" />
@@ -201,7 +208,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {/* Card 4: Quick Links */}
+            {/* Card 3: Quick Links */}
             <div className="p-6 rounded-3xl glass-panel space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Legal & Resources</h4>
               <div className="flex flex-col space-y-2 text-xs font-semibold text-gray-300">

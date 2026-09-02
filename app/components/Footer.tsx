@@ -110,8 +110,8 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="mailto:support@timeatlas.app" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
-                  support@timeatlas.app
+                <a href="mailto:infosiddjain@gmail.com" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                  infosiddjain@gmail.com
                   <ArrowUpRight className="w-3 h-3 opacity-60" />
                 </a>
               </li>
@@ -151,9 +151,9 @@ export const Footer = () => {
 
         {/* Bottom copyright & attribution */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <p>© {new Date().getFullYear()} TimeAtlas Inc. All rights reserved. Master Time Across The Globe.</p>
+          <p>© {new Date().getFullYear()} TimeAtlas Inc. All rights reserved. TimeAtlas is a product by Siddharth Jain.</p>
           <div className="flex items-center gap-1 text-gray-400">
-            <span>Built with precision for global minds</span>
+            <span>Made with ❤️ by Siddharth Jain</span>
           </div>
         </div>
       </div>

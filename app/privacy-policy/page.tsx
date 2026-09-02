@@ -203,7 +203,7 @@ export default function PrivacyPolicyPage() {
                 Privacy Team Contact
               </div>
               <a
-                href="mailto:privacy@timeatlas.app"
+                href="mailto:infosiddjain@gmail.com"
                 className="text-cyan-400 font-mono font-bold text-sm hover:underline flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" /> infosiddjain@gmail.com

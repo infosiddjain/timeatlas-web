@@ -176,7 +176,7 @@ export default function TermsPage() {
                 Legal Department Contact
               </div>
               <a
-                href="mailto:legal@timeatlas.app"
+                href="mailto:infosiddjain@gmail.com"
                 className="text-indigo-400 font-mono font-bold text-sm hover:underline flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" /> infosiddjain@gmail.com
