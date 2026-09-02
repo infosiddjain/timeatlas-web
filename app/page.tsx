@@ -73,7 +73,7 @@ export default function Home() {
             {/* Live Ticking Status Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-bold shadow-lg shadow-cyan-500/10 animate-pulse-glow">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-              <span>TimeAtlas Pro • World Clock & Timezone Scrubber</span>
+              <span>TimeAtlas Pro by Siddharth Jain • World Clock & Timezone Scrubber</span>
             </div>
 
             {/* Main Headline */}

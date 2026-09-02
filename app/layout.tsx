@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'TimeAtlas - World Clock & Timezone Planner App',
+  title: 'TimeAtlas by Siddharth Jain • World Clock & Timezone Planner',
   description:
-    'Master time across the globe. TimeAtlas is the ultimate world clock app with interactive time scrubber slider, group meeting overlap finder, daylight map visualizer, and 7 custom themes.',
+    'Master time across the globe. TimeAtlas is a product by Siddharth Jain featuring an interactive time scrubber slider, group meeting overlap finder, daylight map visualizer, and 7 custom themes.',
   keywords: [
     'TimeAtlas',
     'World Clock App',

@@ -43,7 +43,7 @@ export const Navbar = () => {
                 </span>
               </span>
               <span className="text-[10px] text-gray-400 font-medium tracking-wide">
-                World Clock & Timezone Planner
+                World Clock & Timezone Planner • by Siddharth Jain
               </span>
             </div>
           </Link>
